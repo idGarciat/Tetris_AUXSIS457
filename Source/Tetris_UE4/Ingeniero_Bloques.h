@@ -4,17 +4,18 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "LodgingBuilder.h"
-#include "ArchitecturalEngineer.generated.h"
+#include "ConstructorBloque.h"
+
+#include "Ingeniero_Bloques.generated.h"
 
 UCLASS()
-class TETRIS_UE4_API AArchitecturalEngineer : public AActor
+class TETRIS_UE4_API AIngeniero_Bloques : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	AArchitecturalEngineer();
+	AIngeniero_Bloques();
 
 protected:
 	// Called when the game starts or when spawned
@@ -24,17 +25,14 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	IConstructorBloque* ConstructorBloque;
 
-
-	ILodgingBuilder* LodgingBuilder;
 	//Creates the buildings
-	void ConstructLodging();
+	void ConstruirBloque();
 	//Set the Builder Actor
-	void SetLodgingBuilder(AActor* Builder);
-
+	void SetConstructorBloque(AActor* Constructor);
 	//Get the Lodging of the Builder
-	class ALodging* GetLodging();
-
+	class ABloqueGeneral* GetBloqueGeneral();
 
 
 };

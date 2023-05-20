@@ -7,6 +7,14 @@
 #include "Kismet/GameplayStatics.h"
 #include "Libro/Builder_Main.h"
 #include "Libro/Singleton_Main.h"
+
+
+#include "Block_Explosivo.h"
+#include "Ingeniero_Bloques.h"
+#include "Block_HIelo.h"
+
+
+#include "Libro/FactoryMethod_Main.h"
 #include "EngineUtils.h"
 
 
@@ -30,19 +38,75 @@ void ATetris_UE4GameModeBase::BeginPlay()
         }
     }
 
-    GetWorld()->SpawnActor<ASingleton_Main>(ASingleton_Main::StaticClass());
-    GetWorld()->SpawnActor<ABuilder_Main>(ABuilder_Main::StaticClass());
+    //GetWorldTimerManager().SetTimer(Cronometro, this, &ATetris_UE4GameModeBase::cambiar, 03.0f, true, 2.0f);
 
 
-    	for (int i = 0; i <= 2; i++)
-	{
-		ABoard* Aparecio = GetWorld() -> SpawnActor<ABoard>(ABoard::StaticClass());
-		if (Aparecio)
-		{
-			//If the Spawn succeeds, set the Spawned inventory to the local one and log the success string
-			Board = Aparecio;
-			GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("%s El board está apareciendo"),*Board->GetName()));
-		}
-	}
+    //GetWorld()->SpawnActor<ASingleton_Main>(ASingleton_Main::StaticClass());
+    //GetWorld()->SpawnActor<ABuilder_Main>(ABuilder_Main::StaticClass());
+
+
+ //   	for (int i = 0; i <= 2; i++)
+	//{
+	//	ABoard* Aparecio = GetWorld() -> SpawnActor<ABoard>(ABoard::StaticClass());
+	//	if (Aparecio)
+	//	{
+	//		//If the Spawn succeeds, set the Spawned inventory to the local one and log the success string
+	//		Board = Aparecio;
+	//		GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("%s El board está apareciendo"),*Board->GetName()));
+	//	}
+	//}
+
+
+
+
+    //Patrón Builder
+
+    //Aparece el builder Builder and Engineer
+    //Block_Explosivo = GetWorld()->SpawnActor<ABlock_Explosivo>(ABlock_Explosivo::StaticClass());
+    //Block_HIelo = GetWorld()->SpawnActor<ABlock_HIelo>(ABlock_HIelo::StaticClass());
+    //Ingeniero = GetWorld()->SpawnActor<AIngeniero_Bloques>(AIngeniero_Bloques::StaticClass());
+
+
+
+    //int random = FMath::FRandRange(1,5);                 //elegir el tipo de bloque de manera aleatoria
+    //
+    //if (random == 1)
+    //{
+    //    Ingeniero->SetConstructorBloque(Block_Explosivo);
+    //    Ingeniero->ConstruirBloque();
+    //}
+    //else {
+    //    Ingeniero->SetConstructorBloque(Block_HIelo);
+    //    Ingeniero->ConstruirBloque();
+    //}
+    //GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("%i El numero random"), random));
+    //ABloqueGeneral* BloqueGeneral = Ingeniero->GetBloqueGeneral();
+    //BloqueGeneral->BloqueCaracteristicas();
+
+
+    ////Set the Builder for the Engineer and create the buildings
+    //Ingeniero->SetConstructorBloque(Block_Explosivo);
+    //Ingeniero->ConstruirBloque();
+    ////Get the Engineer's Lodging and Logs the created buildings
+    //ABloqueGeneral* BloqueGeneral = Ingeniero->GetBloqueGeneral();
+    //BloqueGeneral->BloqueCaracteristicas();
+
+    //Ingeniero->SetConstructorBloque(Block_HIelo);
+    //Ingeniero->ConstruirBloque();
+    //BloqueGeneral->BloqueCaracteristicas();
+
+
+
+
+    //Factory_Method
+    GetWorld()->SpawnActor<AFactoryMethod_Main>(AFactoryMethod_Main::StaticClass());
+
+
+}
+
+void ATetris_UE4GameModeBase::cambiar()
+{
+
+    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT(" Cronometro")));
 
 }

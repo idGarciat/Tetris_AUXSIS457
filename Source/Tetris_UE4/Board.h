@@ -69,4 +69,22 @@ private:
 public:
     UPROPERTY()
         ABoard* limite;
+
+
+    void Builder();
+
+    //The Builder Actor
+    UPROPERTY(VisibleAnywhere, Category = "Main")
+        class ABlock_Explosivo* Block_Explosivo;
+    ////The Engineer Actor
+    //UPROPERTY(VisibleAnywhere, Category = "Main")
+    class AIngeniero_Bloques* Ingeniero;
+
+    UPROPERTY(VisibleAnywhere, Category = "Main")
+        class ABlock_HIelo* Block_HIelo;
+
+    UPROPERTY(VisibleAnywhere, Category = "Main")
+        class ABlock_Piedra* Block_Piedra;
+
+    int contador;
 };

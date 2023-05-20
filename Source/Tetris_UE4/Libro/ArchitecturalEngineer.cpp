@@ -2,6 +2,7 @@
 
 
 #include "Libro/ArchitecturalEngineer.h"
+#include "Lodging.h"
 
 // Sets default values
 AArchitecturalEngineer::AArchitecturalEngineer()
@@ -23,5 +24,47 @@ void AArchitecturalEngineer::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void AArchitecturalEngineer::ConstructLodging()
+{
+	{
+		//Log if the Builder is NULL
+		if (!LodgingBuilder) {
+			UE_LOG(LogTemp, Error,TEXT("ConstructLodging(): LodgingBuilder is NULL, make sure it'sinitialized."));
+		return; }
+		//Creates the buildings
+			LodgingBuilder->BuildSwimmingPool();
+			LodgingBuilder->BuildLobbyArea();
+			LodgingBuilder->BuildRooms();
+			LodgingBuilder->BuildRestaurants();
+	}
+}
+
+
+void AArchitecturalEngineer::SetLodgingBuilder(AActor* Builder)
+{
+
+	LodgingBuilder = Cast<ILodgingBuilder>(Builder);
+	if (!LodgingBuilder) //Log Error if cast fails
+	{
+		GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Red, TEXT("Invalid Cast! See Output log for more details"));
+		UE_LOG(LogTemp, Error, TEXT("SetLodgingBuilder(): The Actor isnot a LodgingBuilder!Are you sure that the Actor implements that interface ? "));
+	
+	}
+
+}
+
+ALodging* AArchitecturalEngineer::GetLodging()
+{
+	if (LodgingBuilder)
+	{
+		//Returns the Lodging of the Builder
+		return LodgingBuilder->GetLodging();
+	}
+	//Log if the Builder is NULL
+	UE_LOG(LogTemp, Error, TEXT("GetLodging(): Return nullptr"));
+
+	return nullptr;
 }
 

@@ -49,9 +49,11 @@ void ALodging::SetRestaurants(FString myRestaurants)
 
 void ALodging::LodgingCharacteristics()
 {
+
 	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("%s"),*SwimmingPool));
 	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("%s"),*LobbyArea));
 	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("%s"),*Rooms));
 	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("%s"),*Restaurants));
+
 }
 

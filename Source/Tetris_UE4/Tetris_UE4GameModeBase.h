@@ -20,4 +20,25 @@ class TETRIS_UE4_API ATetris_UE4GameModeBase : public AGameModeBase
     virtual void BeginPlay() override;
 
 	class ABoard* Board;
+
+
+
+	//Patrón Builder
+
+	//The Builder Actor
+	UPROPERTY(VisibleAnywhere, Category = "Main")
+		class ABlock_Explosivo* Block_Explosivo;
+	////The Engineer Actor
+	//UPROPERTY(VisibleAnywhere, Category = "Main")
+		class AIngeniero_Bloques* Ingeniero;
+
+		UPROPERTY(VisibleAnywhere, Category = "Main")
+		class ABlock_HIelo* Block_HIelo;
+
+
+
+		FTimerHandle Cronometro;
+
+		void cambiar();
+
 };

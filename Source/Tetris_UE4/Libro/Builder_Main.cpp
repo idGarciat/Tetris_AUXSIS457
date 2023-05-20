@@ -25,13 +25,13 @@ void ABuilder_Main::BeginPlay()
 	//Set the Builder for the Engineer and create the buildings
 	
 	
-	//Engineer->SetLodgingBuilder(HotelBuilder);
-	//Engineer->ConstructLodging();
+	Engineer->SetLodgingBuilder(HotelBuilder);
+	Engineer->ConstructLodging();
 
 	//Get the Engineer's Lodging and Logs the created buildings
 
-	//ALodging* Lodging = Engineer->GetLodging();
-	//Lodging->LodgingCharacteristics();
+	ALodging* Lodging = Engineer->GetLodging();
+	Lodging->LodgingCharacteristics();
 }
 
 // Called every frame

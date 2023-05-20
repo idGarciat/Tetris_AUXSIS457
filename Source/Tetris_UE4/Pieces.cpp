@@ -6,7 +6,12 @@
 #include "DrawDebugHelpers.h"
 #include "Sound/SoundCue.h"
 #include "Kismet/GameplayStatics.h"
+
+#include "Block_Explosivo.h"
+#include "Block_HIelo.h"
 #include <vector>
+
+#include "Board.h"
 
 // Sets default values
 APieces::APieces()
@@ -91,8 +96,32 @@ void APieces::SpawnBlocks()
     const std::vector<std::pair<float, float>>& YZs = Shapes[Index];
     for(auto&& YZ: YZs)
     {
+
         FRotator Rotation(0.0, 0.0, 0.0);
-        ABlock* B = GetWorld()->SpawnActor<ABlock>(this->GetActorLocation(), Rotation);
+        //if (Board->contador == 1) {
+        //    //ABlock_Explosivo* B = GetWorld()->SpawnActor<ABlock_Explosivo>(this->GetActorLocation(), Rotation);
+
+        //    //Blocks.Add(B);
+        //    //B->AttachToActor(this, FAttachmentTransformRules::KeepRelativeTransform);
+        //    //B->SetActorRelativeLocation(FVector(0.0, YZ.first, YZ.second));
+
+        //    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("El contador es %i"), Board->contador));
+
+        //}
+        //else if (Board->contador == 2)
+        //{
+        //    //ABlock_HIelo* B = GetWorld()->SpawnActor<ABlock_HIelo>(this->GetActorLocation(), Rotation);
+
+        //    ////Blocks.Add(B);
+        //    //B->AttachToActor(this, FAttachmentTransformRules::KeepRelativeTransform);
+        //    //B->SetActorRelativeLocation(FVector(0.0, YZ.first, YZ.second));
+        //    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("El contador es %i"), Board->contador));
+        //}
+
+        ABloqueGeneral* B = GetWorld()->SpawnActor<ABloqueGeneral>(this->GetActorLocation(), Rotation);
+        //ABlock_Explosivo* B= GetWorld()->SpawnActor<ABlock_Explosivo>(this->GetActorLocation(), Rotation);
+
+
         B->Mesh->SetMaterial(1, Colors[Index]);
         Blocks.Add(B);
         B->AttachToActor(this, FAttachmentTransformRules::KeepRelativeTransform);
@@ -103,7 +132,7 @@ void APieces::SpawnBlocks()
 
 void APieces::DrawDebugLines()
 {
-    for(ABlock* B: Blocks)
+    for(ABloqueGeneral* B: Blocks)
     {
         FVector V1 = B->GetActorLocation();
         FVector V2(V1.X, V1.Y, 5.0f);
@@ -230,12 +259,12 @@ bool APieces::MoveDown(bool PlaySound)
 bool APieces::CheckWillCollision(std::function<FVector(FVector OldLocation)> ChangeBeforeCheck)
 {
     FCollisionQueryParams Params;
-    for(ABlock* B: Blocks)
+    for(ABloqueGeneral* B: Blocks)
     {
         Params.AddIgnoredActor(B);
     }
     
-    for(ABlock* B: Blocks)
+    for(ABloqueGeneral* B: Blocks)
     {
         FVector TempVector = B->GetActorLocation();
         TempVector = ChangeBeforeCheck(TempVector);

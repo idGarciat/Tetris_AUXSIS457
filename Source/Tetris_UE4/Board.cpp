@@ -5,6 +5,12 @@
 #include "EngineUtils.h"
 #include "DrawDebugHelpers.h"
 #include "Kismet/GameplayStatics.h"
+
+#include "Block_Explosivo.h"
+#include "Ingeniero_Bloques.h"
+#include "Block_HIelo.h"
+#include "Block_Piedra.h"
+
 #include "Sound/SoundCue.h"
 
 // Sets default values
@@ -70,6 +76,14 @@ void ABoard::BeginPlay()
             it->Destroy();
         }
     }
+
+
+
+    Block_Explosivo = GetWorld()->SpawnActor<ABlock_Explosivo>(FVector(1000, 1000, 1000),FRotator(0,0,0));
+    Block_HIelo = GetWorld()->SpawnActor<ABlock_HIelo>(FVector(1000, 1000, 1000), FRotator(0, 0, 0));
+    Ingeniero = GetWorld()->SpawnActor<AIngeniero_Bloques>(AIngeniero_Bloques::StaticClass());
+
+    contador = 0;
 }
 
 // Called every frame
@@ -129,13 +143,14 @@ void ABoard::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
     PlayerInputComponent->BindAction("MoveDown", IE_Pressed, this, &ABoard::MoveDown);
     PlayerInputComponent->BindAction("MoveDownToEnd", IE_Pressed, this, &ABoard::MoveDownToEnd);
 
+
     //PlayerInputComponent->BindAction("NewPieces", IE_Pressed, this, &ABoard::NewPieces);
     //PlayerInputComponent->BindAction("CheckLine", IE_Pressed, this, &ABoard::CheckLine);
 
 
-    PlayerInputComponent->BindAxis("ChangeLevel", this, &ABoard::SwitchLevel);
+    //PlayerInputComponent->BindAxis("ChangeLevel", this, &ABoard::SwitchLevel);
 
-
+    PlayerInputComponent->BindAction("Builder", IE_Pressed, this, &ABoard::Builder);
 }
 
 
@@ -346,4 +361,47 @@ void ABoard::SwitchLevel(float direction)
         }
 
     }
+}
+
+void ABoard::Builder()
+{
+
+    contador = contador + 1;
+
+    if (contador == 1)
+    {
+        Ingeniero->SetConstructorBloque(Block_Explosivo);
+        Ingeniero->ConstruirBloque();
+
+        GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("%i El contador"), contador));
+        ABloqueGeneral* BloqueGeneral = Ingeniero->GetBloqueGeneral();
+        BloqueGeneral->BloqueCaracteristicas();
+
+    }
+    else if (contador ==2){
+        Ingeniero->SetConstructorBloque(Block_HIelo);
+        Ingeniero->ConstruirBloque();
+
+
+        GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("%i El contador"), contador));
+        ABloqueGeneral* BloqueGeneral = Ingeniero->GetBloqueGeneral();
+        BloqueGeneral->BloqueCaracteristicas();
+        contador = 0;
+
+    }
+    //else if (contador == 3) {
+    //    Ingeniero->SetConstructorBloque(Block_Piedra);
+    //    Ingeniero->ConstruirBloque();
+
+
+    //    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("%i El contador"), contador));
+    //    ABloqueGeneral* BloqueGeneral = Ingeniero->GetBloqueGeneral();
+    //    BloqueGeneral->BloqueCaracteristicas();
+    //    contador = 0;
+    //}
+
+    //GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("%i El contador"), contador));
+    //ABloqueGeneral* BloqueGeneral = Ingeniero->GetBloqueGeneral();
+    //BloqueGeneral->BloqueCaracteristicas();
+
 }

@@ -5,9 +5,12 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Block.h"
+#include "BloqueGeneral.h"
 #include <functional>
 #include "Pieces.generated.h"
 
+
+class ABoard;
 UCLASS()
 class TETRIS_UE4_API APieces : public AActor
 {
@@ -51,8 +54,10 @@ public:
     // 参数ChangeBeforeCheck是一个回调函数，输入要将当前的格子移动到哪里去，向下向左向右或是旋转，用不同的回调函数即可。
     bool CheckWillCollision(std::function<FVector(FVector OldLocation)> ChangeBeforeCheck);
 private:
-    TArray<ABlock*> Blocks;
+    //TArray<ABlock*> Blocks;
     void SpawnBlocks();
-    
+
+    class ABoard* Board;
+    TArray<ABloqueGeneral*> Blocks;
 
 };
