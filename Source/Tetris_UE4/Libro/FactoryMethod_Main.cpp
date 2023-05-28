@@ -27,32 +27,33 @@ void AFactoryMethod_Main::BeginPlay()
 	APotion* Potion = InnerRealmShop->OrderPotion("Health");
 	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("Potion is %s"),*Potion->GetPotionName()));
 	//Create an Inner Health Potion and log its name
-	Potion = InnerRealmShop->OrderPotion("Health");
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("Potion is %s"),*Potion->GetPotionName()));
+	//Potion = InnerRealmShop->OrderPotion("Health");
+	//GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("Potion is %s"),*Potion->GetPotionName()));
 
 	//Create an Inner Health Potion and log its name
-	Potion = InnerRealmShop->OrderPotion("Power");
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("Potion is %s"),*Potion->GetPotionName()));
+	//Potion = InnerRealmShop->OrderPotion("Power");
+	//GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("Potion is %s"),*Potion->GetPotionName()));
 
 	//Create an Inner Health Potion and log its name
-	Potion = InnerRealmShop->OrderPotion("Skill");
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("Potion is %s"),*Potion->GetPotionName()));
+	//Potion = InnerRealmShop->OrderPotion("Skill");
+	//GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("Potion is %s"),*Potion->GetPotionName()));
 
 
 	//Para el OuterRealm
-	APotionShop* OuterRealmShop = GetWorld()->SpawnActor<AOuterRealmPotionShop>(AOuterRealmPotionShop::StaticClass());
+
+	//APotionShop* OuterRealmShop = GetWorld()->SpawnActor<AOuterRealmPotionShop>(AOuterRealmPotionShop::StaticClass());
 
 	//Create an Outer Health Potion and log its name
-	APotion* Potion2 = InnerRealmShop->OrderPotion("Health");
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Potion is %s"), *Potion2->GetPotionName()));
+	//APotion* Potion2 = InnerRealmShop->OrderPotion("Health");
+	//GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Potion is %s"), *Potion2->GetPotionName()));
 
 	//Create an Outer Power Potion and log its name
-	Potion2 = OuterRealmShop->OrderPotion("Power");
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Potion is %s"), *Potion->GetPotionName()));
+	//Potion2 = OuterRealmShop->OrderPotion("Power");
+	//GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Potion is %s"), *Potion->GetPotionName()));
 
 	//Create an Outer Skill Potion and log its name
-	Potion2 = OuterRealmShop->OrderPotion("Skill");
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Potion is %s"), *Potion->GetPotionName()));
+	//Potion2 = OuterRealmShop->OrderPotion("Skill");
+	//GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Potion is %s"), *Potion->GetPotionName()));
 
 
 }

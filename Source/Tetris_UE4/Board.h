@@ -9,6 +9,9 @@
 #include "Pieces.h"
 #include "Board.generated.h"
 
+class AEscenarioShop;
+class APruebaMesh;
+
 UCLASS()
 class TETRIS_UE4_API ABoard : public APawn
 {
@@ -87,4 +90,16 @@ public:
         class ABlock_Piedra* Block_Piedra;
 
     int contador;
+
+
+    //Factory method
+
+    void Cambiar_Escenario();
+
+    AEscenarioShop* EscenarioShop_1;
+
+    int contador2;
+
+
+    APruebaMesh* PruebaMesh;
 };

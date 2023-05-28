@@ -6,12 +6,17 @@
 #include "DrawDebugHelpers.h"
 #include "Kismet/GameplayStatics.h"
 
+#include "EscenarioShop_1.h"
+#include "PruebaMesh.h"
+
 #include "Block_Explosivo.h"
 #include "Ingeniero_Bloques.h"
 #include "Block_HIelo.h"
 #include "Block_Piedra.h"
 
 #include "Sound/SoundCue.h"
+
+
 
 // Sets default values
 ABoard::ABoard()
@@ -84,6 +89,10 @@ void ABoard::BeginPlay()
     Ingeniero = GetWorld()->SpawnActor<AIngeniero_Bloques>(AIngeniero_Bloques::StaticClass());
 
     contador = 0;
+    contador2 = 0;
+
+    EscenarioShop_1 = GetWorld()->SpawnActor<AEscenarioShop_1>(AEscenarioShop_1::StaticClass());
+
 }
 
 // Called every frame
@@ -151,6 +160,8 @@ void ABoard::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
     //PlayerInputComponent->BindAxis("ChangeLevel", this, &ABoard::SwitchLevel);
 
     PlayerInputComponent->BindAction("Builder", IE_Pressed, this, &ABoard::Builder);
+
+    PlayerInputComponent->BindAction("Escenario", IE_Pressed, this, &ABoard::Cambiar_Escenario);
 }
 
 
@@ -403,5 +414,29 @@ void ABoard::Builder()
     //GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("%i El contador"), contador));
     //ABloqueGeneral* BloqueGeneral = Ingeniero->GetBloqueGeneral();
     //BloqueGeneral->BloqueCaracteristicas();
+
+}
+
+void ABoard::Cambiar_Escenario()
+{
+    contador2 = contador2 + 1;
+    if (contador2 == 1) {
+
+        AEscenario* Escenario = EscenarioShop_1->OrdenarEscenario("Escenario_1");
+    }
+    else if (contador2 == 2) {
+        AEscenario* Escenario = EscenarioShop_1->OrdenarEscenario("Escenario_2");
+    }
+    else if (contador2 == 3){
+        AEscenario* Escenario = EscenarioShop_1->OrdenarEscenario("Escenario_3");
+
+        contador2 = 0;
+
+        PruebaMesh = GetWorld()->SpawnActor<APruebaMesh>(FVector(100,100,100),FRotator(90,270,90));
+
+    }
+
+
+    
 
 }

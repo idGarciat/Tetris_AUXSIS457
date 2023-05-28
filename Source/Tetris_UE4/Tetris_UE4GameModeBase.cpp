@@ -13,9 +13,14 @@
 #include "Ingeniero_Bloques.h"
 #include "Block_HIelo.h"
 
+#include "EscenarioShop_1.h"
+#include "EscenarioShop_2.h"
+
 
 #include "Libro/FactoryMethod_Main.h"
 #include "EngineUtils.h"
+
+
 
 
 ATetris_UE4GameModeBase::ATetris_UE4GameModeBase()
@@ -99,7 +104,21 @@ void ATetris_UE4GameModeBase::BeginPlay()
 
 
     //Factory_Method
-    GetWorld()->SpawnActor<AFactoryMethod_Main>(AFactoryMethod_Main::StaticClass());
+    
+    //GetWorld()->SpawnActor<AFactoryMethod_Main>(AFactoryMethod_Main::StaticClass());
+
+    //Haciendo aparecer los generadores de escenarios
+    //AEscenarioShop* EscenarioShop_1 = GetWorld() -> SpawnActor<AEscenarioShop_1>(AEscenarioShop_1::StaticClass());
+    //AEscenarioShop* EscenarioShop_2 = GetWorld()->SpawnActor<AEscenarioShop_2>(AEscenarioShop_2::StaticClass());
+
+
+    //Definiendo los escenarios
+    //AEscenario* Escenario = EscenarioShop_1->OrdenarEscenario("Escenario_3");
+    //GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("El escenario es %s"),*Escenario->GetNombreEscenario()));
+
+
+
+
 
 
 }

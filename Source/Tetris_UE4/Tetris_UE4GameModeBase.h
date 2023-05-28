@@ -41,4 +41,7 @@ class TETRIS_UE4_API ATetris_UE4GameModeBase : public AGameModeBase
 
 		void cambiar();
 
+
+
+
 };
