@@ -16,6 +16,12 @@
 #include "EscenarioShop_1.h"
 #include "EscenarioShop_2.h"
 
+#include "Libro/Observer_Main.h"
+
+
+#include "Libro/StarShipFacade_Main.h"
+#include "CuboGeneralFacade.h"
+#include "CubosFacade.h"
 
 #include "Libro/FactoryMethod_Main.h"
 #include "EngineUtils.h"
@@ -117,7 +123,20 @@ void ATetris_UE4GameModeBase::BeginPlay()
     //GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("El escenario es %s"),*Escenario->GetNombreEscenario()));
 
 
+    //Observer
 
+    //GetWorld()->SpawnActor<AObserver_Main>(AObserver_Main::StaticClass());
+
+
+    //Facade
+
+    //GetWorld()->SpawnActor<AStarShipFacade_Main>(AStarShipFacade_Main::StaticClass());
+
+        //Create the Ship Facade Actor
+    ACubosFacade* CubosFacade = GetWorld()->SpawnActor<ACubosFacade>(ACubosFacade::StaticClass());
+    //Execute the needed tasks
+
+    CubosFacade->Saltar();
 
 
 

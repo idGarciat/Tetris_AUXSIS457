@@ -9,8 +9,7 @@
 void ABlock_Explosivo::BeginPlay()
 {
 	// Spawn the Lodging Actors
-		BloqueGeneral = GetWorld()->SpawnActor<ABloqueGeneral>
-		(ABloqueGeneral::StaticClass());
+	BloqueGeneral = GetWorld()->SpawnActor<ABloqueGeneral>(ABloqueGeneral::StaticClass());
 	//Attach it to the Builder (this)
 	BloqueGeneral->AttachToActor(this,FAttachmentTransformRules::KeepRelativeTransform);
 	UStaticMeshComponent* MeshComponent = Cast<UStaticMeshComponent>(GetComponentByClass(UStaticMeshComponent::StaticClass()));

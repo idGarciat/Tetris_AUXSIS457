@@ -46,10 +46,7 @@ ABloqueGeneral* AIngeniero_Bloques::GetBloqueGeneral()
 	{
 		//Returns the Lodging of the Builder
 		return ConstructorBloque->GetBloqueGeneral();
-	}
-
-	
-	return nullptr;
+	}else return nullptr;
 
 }
 
