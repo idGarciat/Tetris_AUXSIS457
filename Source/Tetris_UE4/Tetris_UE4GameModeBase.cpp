@@ -23,6 +23,9 @@
 #include "CuboGeneralFacade.h"
 #include "CubosFacade.h"
 
+#include "BloqueObedece.h"
+#include "Senalador.h"
+
 #include "Libro/FactoryMethod_Main.h"
 #include "EngineUtils.h"
 
@@ -133,10 +136,24 @@ void ATetris_UE4GameModeBase::BeginPlay()
     //GetWorld()->SpawnActor<AStarShipFacade_Main>(AStarShipFacade_Main::StaticClass());
 
         //Create the Ship Facade Actor
-    ACubosFacade* CubosFacade = GetWorld()->SpawnActor<ACubosFacade>(ACubosFacade::StaticClass());
+    //ACubosFacade* CubosFacade = GetWorld()->SpawnActor<ACubosFacade>(ACubosFacade::StaticClass());
     //Execute the needed tasks
 
-    CubosFacade->Saltar();
+    //CubosFacade->Saltar();
+
+
+
+    //Patron Observer
+    //Spawn the Clock Tower
+    //ASenalador* Senalador = GetWorld()->SpawnActor<ASenalador>(ASenalador::StaticClass());
+    //Spawn the first Subscriber and set its Clock Tower
+    //ABloqueObedece* BloqueObedece = GetWorld()->SpawnActor<ABloqueObedece>(ABloqueObedece::StaticClass());
+    //BloqueObedece->DefinirSenalador(Senalador);
+
+    //Change the time of the Clock Tower, so the Subscribers can execute their own routine
+    //Senalador->DefinirEstado("Estado2");
+    //Senalador->DefinirEstado("Estado2");
+    //Senalador->DefinirEstado("Estado3");
 
 
 

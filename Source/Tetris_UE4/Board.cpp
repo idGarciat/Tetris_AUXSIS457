@@ -14,6 +14,9 @@
 #include "Block_HIelo.h"
 #include "Block_Piedra.h"
 
+#include "Senalador.h"
+
+
 #include "Sound/SoundCue.h"
 
 
@@ -426,6 +429,7 @@ void ABoard::Cambiar_Escenario()
     }
     else if (contador2 == 2) {
         AEscenario* Escenario = EscenarioShop_1->OrdenarEscenario("Escenario_2");
+
     }
     else if (contador2 == 3){
         AEscenario* Escenario = EscenarioShop_1->OrdenarEscenario("Escenario_3");
@@ -438,5 +442,6 @@ void ABoard::Cambiar_Escenario()
 
 
     
+
 
 }
