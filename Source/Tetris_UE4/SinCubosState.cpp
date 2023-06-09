@@ -2,6 +2,7 @@
 
 
 #include "SinCubosState.h"
+#include "OldBoard.h"
 
 // Sets default values
 ASinCubosState::ASinCubosState()
@@ -25,32 +26,42 @@ void ASinCubosState::Tick(float DeltaTime)
 
 }
 
+void ASinCubosState::DefinirBoard(AOldBoard* Board)
+{
+	OldBoard = Board;
+}
+
 void ASinCubosState::InsertarCubo()
 {
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("No hay cubos"));
+	OldBoard->DefinirEstado(OldBoard->GetCuboInsertadoState());
+
 }
 
 void ASinCubosState::RechazarCubo()
 {
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("Cubo rechazado"));
 }
 
 void ASinCubosState::JalarPalanca()
 {
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("Palanca jalada"));
 }
 
 void ASinCubosState::Pagar()
 {
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("Recibiendo pago"));
 }
 
 void ASinCubosState::RellenarBloques()
 {
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("Rellenando bloques"));
 }
 
 FString ASinCubosState::ToString()
 {
-	return FString();
+	return "Esperando cubos";
 }
 
-void ASinCubosState::DefinirBoard(AOldBoard* Board)
-{
-}
+
 

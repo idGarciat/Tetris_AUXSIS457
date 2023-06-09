@@ -91,7 +91,7 @@ void AOldBoard::RellenarBloques(int myContador)
 {
 	// Add the passed count to the Dollars amount and log it
 	Contador += myContador;
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("The Old School Slot Machine was just filled and new dollar count is : % i"), Contador));
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("Los bloques del OlbBoard son: % i"), Contador));
 			//Then execute the Restock Dollars routine based on the current state
 	Estado->RellenarBloques();
 

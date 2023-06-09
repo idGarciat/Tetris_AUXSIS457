@@ -2,6 +2,7 @@
 
 
 #include "CuboInsertadoState.h"
+#include "OldBoard.h"
 
 // Sets default values
 ACuboInsertadoState::ACuboInsertadoState()
@@ -25,32 +26,43 @@ void ACuboInsertadoState::Tick(float DeltaTime)
 
 }
 
+void ACuboInsertadoState::DefinirBoard(AOldBoard* Board)
+{
+	OldBoard = Board;
+}
+
 void ACuboInsertadoState::InsertarCubo()
 {
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("Cubo insertado"));
 }
 
 void ACuboInsertadoState::RechazarCubo()
 {
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,TEXT("Cubo rechazado"));
+	OldBoard->DefinirEstado(OldBoard -> GetSinCubosState());
 }
 
 void ACuboInsertadoState::JalarPalanca()
 {
+	// Log the Pull Lever string and set the state to "Won Dollars State"
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,TEXT("Palanca jalada"));
+	OldBoard->DefinirEstado(OldBoard-> GetBloquesGanadosState());
 }
 
 void ACuboInsertadoState::Pagar()
 {
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("Pagando"));
 }
 
 void ACuboInsertadoState::RellenarBloques()
 {
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("Rellenando"));
 }
 
 FString ACuboInsertadoState::ToString()
 {
-	return FString();
+	return "Esperando que se jale la palanca denuevo";
 }
 
-void ACuboInsertadoState::DefinirBoard(AOldBoard* Board)
-{
-}
+
 

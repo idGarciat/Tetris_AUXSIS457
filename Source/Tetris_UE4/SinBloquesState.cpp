@@ -25,32 +25,41 @@ void ASinBloquesState::Tick(float DeltaTime)
 
 }
 
+void ASinBloquesState::DefinirBoard(AOldBoard* Board)
+{
+	OldBoard = Board;
+}
+
+
 void ASinBloquesState::InsertarCubo()
 {
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,TEXT("Cubo insertado"));
 }
 
 void ASinBloquesState::RechazarCubo()
 {
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("Cubo rechazado"));
 }
 
 void ASinBloquesState::JalarPalanca()
 {
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("Se jaló la palanca"));
 }
 
 void ASinBloquesState::Pagar()
 {
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("Recibiendo pago"));
 }
 
 void ASinBloquesState::RellenarBloques()
 {
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("Rellenando bloques"));
 }
 
 FString ASinBloquesState::ToString()
 {
-	return FString();
+	return "La maquina esta sin bloques";
 }
 
-void ASinBloquesState::DefinirBoard(AOldBoard* Board)
-{
-}
+
 

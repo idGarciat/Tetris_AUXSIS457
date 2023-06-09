@@ -26,6 +26,8 @@
 #include "BloqueObedece.h"
 #include "Senalador.h"
 
+#include "OldBoard.h"
+
 #include "Libro/FactoryMethod_Main.h"
 #include "EngineUtils.h"
 
@@ -154,6 +156,40 @@ void ATetris_UE4GameModeBase::BeginPlay()
     //Senalador->DefinirEstado("Estado2");
     //Senalador->DefinirEstado("Estado2");
     //Senalador->DefinirEstado("Estado3");
+
+
+    //Patron State
+    // 
+    //Create the Slot Machine and set its Dollars Amount to 100
+    AOldBoard* OldBoard = GetWorld() -> SpawnActor<AOldBoard>(AOldBoard::StaticClass()); OldBoard->Inicializar(100);
+
+    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("%s"),*OldBoard->GetEstado() -> ToString()));
+
+    //Insert coin and Pull the lever
+    OldBoard->InsertarCubo();
+    OldBoard->JalarPalanca();
+
+    // Log the current Slot Machine state
+    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("%s"),*OldBoard->GetEstado() -> ToString()));
+
+
+    //Insert coin, Pull the lever, then insert coin again
+    OldBoard->InsertarCubo();
+    OldBoard->JalarPalanca();
+    OldBoard->InsertarCubo();
+
+    // Log the current Slot Machine state
+    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("%s"), *OldBoard->GetEstado()->ToString()));
+
+    //Pull the lever
+    //OldBoard->JalarPalanca();
+    //Add 100 Dollars
+    //OldBoard->RellenarBloques(100);
+    //Insert coin and Pull the lever
+    //OldBoard->InsertarCubo();
+    //OldBoard->JalarPalanca();
+    //Log the current Slot Machine state
+    //GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("%s"),*OldBoard->GetEstado() -> ToString()));
 
 
 
