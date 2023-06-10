@@ -13,6 +13,7 @@ UCLASS()
 class TETRIS_UE4_API AMeleeEnemy : public ADecorator
 {
 	GENERATED_BODY()
+	
 public:
 	//Start Fighting
 	virtual void Fight() override;
@@ -21,6 +22,4 @@ public:
 	//Kill this enemy
 	virtual void Die() override;
 
-	//Define el enemigo
-	virtual void SetEnemy(AActor* ConcreteEnemy) override;
 };

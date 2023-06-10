@@ -3,26 +3,25 @@
 
 #include "Libro/ConcreteEnemy.h"
 
-void AConcreteEnemy::Fight()
+// Sets default values
+AConcreteEnemy::AConcreteEnemy()
 {
-    //Call the parent Fight function and log a message
-    Super::Fight();
-    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("Pelea del concrete"));
-}
-
-int AConcreteEnemy::GetDamage()
-{
-    //Returns the base Damage + 5
-    return Super::GetDamage() + 5;
-}
-
-void AConcreteEnemy::Die()
-{
-    Super::Die();
-    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("El concrete enemy muere"));
-}
-
-void AConcreteEnemy::SetEnemy(AActor* ConcreteEnemy)
-{
+ 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = true;
 
 }
+
+// Called when the game starts or when spawned
+void AConcreteEnemy::BeginPlay()
+{
+	Super::BeginPlay();
+	
+}
+
+// Called every frame
+void AConcreteEnemy::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+}
+

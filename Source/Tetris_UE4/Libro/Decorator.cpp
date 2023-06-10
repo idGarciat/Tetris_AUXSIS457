@@ -27,18 +27,18 @@ void ADecorator::Tick(float DeltaTime)
 
 void ADecorator::Fight()
 {
+	this->Enemy->Fight();
 }
 
 int ADecorator::GetDamage()
 {
-	return 0;
+	return this->Enemy->GetDamage();
 }
 
 void ADecorator::Die()
 {
+	this->Enemy->Die();
 }
 
-void ADecorator::SetEnemy(AActor* ConcreteEnemy)
-{
-}
+
 

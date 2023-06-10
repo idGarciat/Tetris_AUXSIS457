@@ -20,7 +20,5 @@ public:
 	virtual int GetDamage() override;
 	//Kill this enemy
 	virtual void Die() override;
-	//Define el enemigo
-	virtual void SetEnemy(AActor* ConcreteEnemy) override;
 
 };

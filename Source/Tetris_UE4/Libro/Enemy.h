@@ -22,7 +22,7 @@ class TETRIS_UE4_API IEnemy
 
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
-
+	//The pure virtual functions of the Enemy
 	virtual void Fight() = 0;
 	virtual int GetDamage() = 0;
 	virtual void Die() = 0;

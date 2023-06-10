@@ -3,25 +3,30 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Libro/Decorator.h"
+#include "GameFramework/Actor.h"
+#include "Libro/Enemy.h"
 #include "ConcreteEnemy.generated.h"
 
-/**
- * 
- */
 UCLASS()
-class TETRIS_UE4_API AConcreteEnemy : public ADecorator
+class TETRIS_UE4_API AConcreteEnemy : public AActor, public IEnemy
 {
 	GENERATED_BODY()
 	
-public:
-	//Start Fighting
-	virtual void Fight() override;
-	//Returns how much damage this enemy has taken
-	virtual int GetDamage() override;
-	//Kill this enemy
-	virtual void Die() override;
-	//Define el enemigo
-	virtual void SetEnemy(AActor* ConcreteEnemy) override;
+public:	
+	// Sets default values for this actor's properties
+	AConcreteEnemy();
+
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
+public:	
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+
+	virtual void Fight() override {}
+	virtual int GetDamage() override { return 5; }
+	virtual void Die() override {}
+
 
 };

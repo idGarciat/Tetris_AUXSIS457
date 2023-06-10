@@ -5,28 +5,23 @@
 
 void AProjectileEnemy::Fight()
 {
-    //Call the parent Fight function and log a message
-    Super::Fight();
-    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,TEXT("Disparando de lejitos"));
+	//Call the parent Fight function and log a message
+	Super::Fight();
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("El enemigo proyectil"));
 
 }
 
 int AProjectileEnemy::GetDamage()
 {
-    //Returns the base Damage + 5
-    return Super::GetDamage() + 5;
+	//Returns the base Damage + 5
+	return Super::GetDamage() + 5;
 }
 
 void AProjectileEnemy::Die()
 {
-    //Call the parent Die function and log a message
-    Super::Die();
-    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("El enemigo projectile muere"));
-}
-
-void AProjectileEnemy::SetEnemy(AActor* ConcreteEnemy)
-{
-
+	//Call the parent Die function and log a message
+	Super::Die();
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("El enemigo proyectil muere"));
 }
 
 

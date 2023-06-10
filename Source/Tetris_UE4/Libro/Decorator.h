@@ -4,10 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Libro/Enemy.h"
 #include "Decorator.generated.h"
 
 UCLASS()
-class TETRIS_UE4_API ADecorator : public AActor
+class TETRIS_UE4_API ADecorator : public AActor, public IEnemy
 {
 	GENERATED_BODY()
 	
@@ -23,16 +24,15 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+private:
+	IEnemy* Enemy;
+public:
 
-protected:
-	//Start Fighting
-	virtual void Fight();
-	//Returns how much damage this enemy has taken
-	virtual int GetDamage();
-	//Kill this enemy
-	virtual void Die();
-	//Define el enemigo
-	virtual void SetEnemy(AActor* ConcreteEnemy);
+	virtual void Fight()  override;
+	virtual int GetDamage() override;
+	virtual void Die() override;
 
 
+	void SetEnemy(IEnemy* _Enemy) { Enemy = _Enemy; }
+	IEnemy* GetEnemy() { return Enemy; }
 };

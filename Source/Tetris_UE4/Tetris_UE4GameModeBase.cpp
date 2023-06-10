@@ -158,28 +158,28 @@ void ATetris_UE4GameModeBase::BeginPlay()
     //Senalador->DefinirEstado("Estado3");
 
 
-    //Patron State
-    // 
-    //Create the Slot Machine and set its Dollars Amount to 100
-    AOldBoard* OldBoard = GetWorld() -> SpawnActor<AOldBoard>(AOldBoard::StaticClass()); OldBoard->Inicializar(100);
+    ////Patron State
+    //// 
+    ////Create the Slot Machine and set its Dollars Amount to 100
+    //AOldBoard* OldBoard = GetWorld() -> SpawnActor<AOldBoard>(AOldBoard::StaticClass()); OldBoard->Inicializar(100);
 
-    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("%s"),*OldBoard->GetEstado() -> ToString()));
+    //GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("%s"),*OldBoard->GetEstado() -> ToString()));
 
-    //Insert coin and Pull the lever
-    OldBoard->InsertarCubo();
-    OldBoard->JalarPalanca();
+    ////Insert coin and Pull the lever
+    //OldBoard->InsertarCubo();
+    //OldBoard->JalarPalanca();
 
-    // Log the current Slot Machine state
-    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("%s"),*OldBoard->GetEstado() -> ToString()));
+    //// Log the current Slot Machine state
+    //GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("%s"),*OldBoard->GetEstado() -> ToString()));
 
 
-    //Insert coin, Pull the lever, then insert coin again
-    OldBoard->InsertarCubo();
-    OldBoard->JalarPalanca();
-    OldBoard->InsertarCubo();
+    ////Insert coin, Pull the lever, then insert coin again
+    //OldBoard->InsertarCubo();
+    //OldBoard->JalarPalanca();
+    //OldBoard->InsertarCubo();
 
-    // Log the current Slot Machine state
-    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("%s"), *OldBoard->GetEstado()->ToString()));
+    //// Log the current Slot Machine state
+    //GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("%s"), *OldBoard->GetEstado()->ToString()));
 
     //Pull the lever
     //OldBoard->JalarPalanca();
