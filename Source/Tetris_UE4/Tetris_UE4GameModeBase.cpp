@@ -28,11 +28,14 @@
 
 #include "OldBoard.h"
 
-
+#include "Libro/Decorator_Main.h"
 #include "CuboDeAgua.h"
 #include "CuboDeFuego.h"
 #include "CuboDeTierra.h"
 #include "ConcreteCubos.h"
+
+
+#include "Libro/Adapter_Main.h"
 
 
 #include "Libro/FactoryMethod_Main.h"
@@ -121,7 +124,7 @@ void ATetris_UE4GameModeBase::BeginPlay()
 
 
 
-    //Factory_Method
+    //Patron Factory_Method
     
     //GetWorld()->SpawnActor<AFactoryMethod_Main>(AFactoryMethod_Main::StaticClass());
 
@@ -135,12 +138,9 @@ void ATetris_UE4GameModeBase::BeginPlay()
     //GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("El escenario es %s"),*Escenario->GetNombreEscenario()));
 
 
-    //Observer
-
-    //GetWorld()->SpawnActor<AObserver_Main>(AObserver_Main::StaticClass());
 
 
-    //Facade
+    //Patron Facade
 
     //GetWorld()->SpawnActor<AStarShipFacade_Main>(AStarShipFacade_Main::StaticClass());
 
@@ -153,6 +153,10 @@ void ATetris_UE4GameModeBase::BeginPlay()
 
 
     //Patron Observer
+
+    //GetWorld()->SpawnActor<AObserver_Main>(AObserver_Main::StaticClass());
+
+    // 
     //Spawn the Clock Tower
     //ASenalador* Senalador = GetWorld()->SpawnActor<ASenalador>(ASenalador::StaticClass());
     //Spawn the first Subscriber and set its Clock Tower
@@ -200,43 +204,50 @@ void ATetris_UE4GameModeBase::BeginPlay()
 
 
     //Patron Decorator
-    //Spawn a Concrete Enemy
-    AConcreteCubos* ConcreteCubos = GetWorld()->SpawnActor<AConcreteCubos>(AConcreteCubos::StaticClass());
-    //Spawn a Melee Enemy and set its Enemy to the Concrete one
-    ACuboDeAgua* CuboDeAgua= GetWorld()->SpawnActor<ACuboDeAgua>(ACuboDeAgua::StaticClass());
-    CuboDeAgua->DefinirCubo(ConcreteCubos);
-    //Spawn a Projectile Enemy and set its Enemy to the Melee one
-    ACuboDeFuego* CuboDeFuego = GetWorld()->SpawnActor<ACuboDeFuego>(ACuboDeFuego::StaticClass());
-    CuboDeFuego->DefinirCubo(CuboDeAgua);
-    //Spawn a Projectile Enemy and set its Enemy to the Melee one
-    ACuboDeTierra* CuboDeTierra = GetWorld()->SpawnActor<ACuboDeTierra>(ACuboDeTierra::StaticClass());
-    CuboDeTierra->DefinirCubo(CuboDeFuego);
+    //
 
-    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("Cubo De Agua apareciendo"));
-    CuboDecorator = CuboDeAgua;
-    CuboDecorator->CambioMaterial();
+    //GetWorld()->SpawnActor<ADecorator_Main>(ADecorator_Main::StaticClass());
+    // 
+    ////Spawn a Concrete Enemy
+    //AConcreteCubos* ConcreteCubos = GetWorld()->SpawnActor<AConcreteCubos>(AConcreteCubos::StaticClass());
+    ////Spawn a Melee Enemy and set its Enemy to the Concrete one
+    //ACuboDeAgua* CuboDeAgua= GetWorld()->SpawnActor<ACuboDeAgua>(ACuboDeAgua::StaticClass());
+    //CuboDeAgua->DefinirCubo(ConcreteCubos);
+    ////Spawn a Projectile Enemy and set its Enemy to the Melee one
+    //ACuboDeFuego* CuboDeFuego = GetWorld()->SpawnActor<ACuboDeFuego>(ACuboDeFuego::StaticClass());
+    //CuboDeFuego->DefinirCubo(CuboDeAgua);
+    ////Spawn a Projectile Enemy and set its Enemy to the Melee one
+    //ACuboDeTierra* CuboDeTierra = GetWorld()->SpawnActor<ACuboDeTierra>(ACuboDeTierra::StaticClass());
+    //CuboDeTierra->DefinirCubo(CuboDeFuego);
 
-    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("Cubo De Agua Desapareciendo"));
-    CuboDecorator->Desaparecer();
+    //GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("Cubo De Agua apareciendo"));
+    //CuboDecorator = CuboDeAgua;
+    //CuboDecorator->CambioMaterial();
 
-    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("El cubo ahora es el de fuego"));
-    CuboDecorator = CuboDeFuego;
-    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("Cubo De Fuego Cambia de localizacion"));
-    CuboDecorator->CambioLocalizacion();
+    //GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("Cubo De Agua Desapareciendo"));
+    //CuboDecorator->Desaparecer();
+
+    //GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("El cubo ahora es el de fuego"));
+    //CuboDecorator = CuboDeFuego;
+    //GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("Cubo De Fuego Cambia de localizacion"));
+    //CuboDecorator->CambioLocalizacion();
 
 
-    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("El cubo ahora es el de tierra"));
-    CuboDecorator = CuboDeTierra;
-    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("El contador ahora aumentara a: %i"), CuboDecorator->Contador()));
-    CuboDecorator->Contador();
-    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("El contador ahora aumentara a: %i"), CuboDecorator->Contador()));
+    //GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("El cubo ahora es el de tierra"));
+    //CuboDecorator = CuboDeTierra;
+    //GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("El contador ahora aumentara a: %i"), CuboDecorator->Contador()));
+    //CuboDecorator->Contador();
 
-    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("El cubo ahora es el de Agua"));
-    CuboDecorator = CuboDeAgua;
-    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("El contador ahora aumentara a: %i"), CuboDecorator->Contador()));
-    CuboDecorator->Contador();
-    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("El contador ahora aumentara a: %i"), CuboDecorator->Contador()));
+    //GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("El cubo ahora es el de Agua"));
+    //CuboDecorator = CuboDeAgua;
+    //CuboDecorator->Contador();
+    //GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("El contador ahora aumentara a: %i"), CuboDecorator->Contador()));
 
+
+
+    //Patron Adapter
+
+    //GetWorld()->SpawnActor<AAdapter_Main>(AAdapter_Main::StaticClass());
 
 }
 

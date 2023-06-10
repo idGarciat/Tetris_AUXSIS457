@@ -6,8 +6,8 @@
 void AProjectileEnemy::Fight()
 {
 	//Call the parent Fight function and log a message
-	Super::Fight();
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("El enemigo proyectil"));
+	//Super::Fight();
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("El enemigo proyectil ataca"));
 
 }
 
@@ -20,7 +20,7 @@ int AProjectileEnemy::GetDamage()
 void AProjectileEnemy::Die()
 {
 	//Call the parent Die function and log a message
-	Super::Die();
+	//Super::Die();
 	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("El enemigo proyectil muere"));
 }
 
