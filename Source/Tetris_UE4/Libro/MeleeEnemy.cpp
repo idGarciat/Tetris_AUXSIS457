@@ -6,7 +6,7 @@
 void AMeleeEnemy::Fight()
 {
 	//Call the parent Fight function and log a message
-	Super::Fight();
+	//Super::Fight();
 	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("El enemigo melee ataca"));
 }
 
@@ -19,7 +19,7 @@ int AMeleeEnemy::GetDamage()
 void AMeleeEnemy::Die()
 {
 	//Call the parent Die function and log a message
-	Super::Die();
+	//Super::Die();
 	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("El enemigo melee muere"));
 }
 

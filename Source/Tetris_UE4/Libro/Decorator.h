@@ -28,11 +28,12 @@ private:
 	IEnemy* Enemy;
 public:
 
-	virtual void Fight()  override;
+	virtual void Fight() override;
 	virtual int GetDamage() override;
 	virtual void Die() override;
 
 
 	void SetEnemy(IEnemy* _Enemy) { Enemy = _Enemy; }
 	IEnemy* GetEnemy() { return Enemy; }
+
 };

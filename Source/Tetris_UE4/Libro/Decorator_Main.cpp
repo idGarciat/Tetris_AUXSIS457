@@ -28,17 +28,22 @@ void ADecorator_Main::BeginPlay()
 	//Spawn a Projectile Enemy and set its Enemy to the Melee one
 	AProjectileEnemy* ProjectileEnemy = GetWorld() -> SpawnActor<AProjectileEnemy>(AProjectileEnemy::StaticClass());
 	ProjectileEnemy->SetEnemy(MeleeEnemy);
+
+
 	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,TEXT("Enemigos Melees apareciendo"));
 	Enemy = MeleeEnemy;
 	Enemy->Fight();
+	Enemy->Die();
 	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("Enemigos Melee haciendo %i dano"), Enemy -> GetDamage()));
 	Enemy->Die();
+
 	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,TEXT("Enemigos ahora armados con pistolas"));
 	Enemy = ProjectileEnemy;
 	Enemy->Fight();
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("Los proyectiles hacen %i dano."), Enemy -> GetDamage()));
 	Enemy->Die();
 
+	//GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("Los proyectiles hacen %i dano."), Enemy -> GetDamage()));
+	//Enemy->Die();
 
 
 }
