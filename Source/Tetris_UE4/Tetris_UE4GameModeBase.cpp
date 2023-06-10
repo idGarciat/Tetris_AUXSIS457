@@ -28,6 +28,13 @@
 
 #include "OldBoard.h"
 
+
+#include "CuboDeAgua.h"
+#include "CuboDeFuego.h"
+#include "CuboDeTierra.h"
+#include "ConcreteCubos.h"
+
+
 #include "Libro/FactoryMethod_Main.h"
 #include "EngineUtils.h"
 
@@ -191,6 +198,44 @@ void ATetris_UE4GameModeBase::BeginPlay()
     //Log the current Slot Machine state
     //GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("%s"),*OldBoard->GetEstado() -> ToString()));
 
+
+    //Patron Decorator
+    //Spawn a Concrete Enemy
+    AConcreteCubos* ConcreteCubos = GetWorld()->SpawnActor<AConcreteCubos>(AConcreteCubos::StaticClass());
+    //Spawn a Melee Enemy and set its Enemy to the Concrete one
+    ACuboDeAgua* CuboDeAgua= GetWorld()->SpawnActor<ACuboDeAgua>(ACuboDeAgua::StaticClass());
+    CuboDeAgua->DefinirCubo(ConcreteCubos);
+    //Spawn a Projectile Enemy and set its Enemy to the Melee one
+    ACuboDeFuego* CuboDeFuego = GetWorld()->SpawnActor<ACuboDeFuego>(ACuboDeFuego::StaticClass());
+    CuboDeFuego->DefinirCubo(CuboDeAgua);
+    //Spawn a Projectile Enemy and set its Enemy to the Melee one
+    ACuboDeTierra* CuboDeTierra = GetWorld()->SpawnActor<ACuboDeTierra>(ACuboDeTierra::StaticClass());
+    CuboDeTierra->DefinirCubo(CuboDeFuego);
+
+    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("Cubo De Agua apareciendo"));
+    CuboDecorator = CuboDeAgua;
+    CuboDecorator->CambioMaterial();
+
+    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("Cubo De Agua Desapareciendo"));
+    CuboDecorator->Desaparecer();
+
+    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("El cubo ahora es el de fuego"));
+    CuboDecorator = CuboDeFuego;
+    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("Cubo De Fuego Cambia de localizacion"));
+    CuboDecorator->CambioLocalizacion();
+
+
+    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("El cubo ahora es el de tierra"));
+    CuboDecorator = CuboDeTierra;
+    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("El contador ahora aumentara a: %i"), CuboDecorator->Contador()));
+    CuboDecorator->Contador();
+    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("El contador ahora aumentara a: %i"), CuboDecorator->Contador()));
+
+    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, TEXT("El cubo ahora es el de Agua"));
+    CuboDecorator = CuboDeAgua;
+    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("El contador ahora aumentara a: %i"), CuboDecorator->Contador()));
+    CuboDecorator->Contador();
+    GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("El contador ahora aumentara a: %i"), CuboDecorator->Contador()));
 
 
 }

@@ -39,6 +39,8 @@ void ADecorator_Main::BeginPlay()
 	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow,FString::Printf(TEXT("Los proyectiles hacen %i dano."), Enemy -> GetDamage()));
 	Enemy->Die();
 
+
+
 }
 
 // Called every frame

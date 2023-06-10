@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
+#include "CuboDecorator.h"
 #include "Tetris_UE4GameModeBase.generated.h"
 
 /**
@@ -42,6 +43,7 @@ class TETRIS_UE4_API ATetris_UE4GameModeBase : public AGameModeBase
 		void cambiar();
 
 
+		class ICuboDecorator* CuboDecorator;
 
 
 };
