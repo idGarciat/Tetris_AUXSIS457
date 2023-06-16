@@ -36,7 +36,14 @@
 
 
 #include "Libro/Adapter_Main.h"
+#include "PiezasAdapter.h"
+#include "ShooterBloques.h"
 
+
+#include "Libro/Strategy_Main.h"
+#include "EstrategiaFuerte.h"
+#include "EstrategiaRapida.h"
+#include "PiezasStrategy.h"
 
 #include "Libro/FactoryMethod_Main.h"
 #include "EngineUtils.h"
@@ -248,6 +255,34 @@ void ATetris_UE4GameModeBase::BeginPlay()
     //Patron Adapter
 
     //GetWorld()->SpawnActor<AAdapter_Main>(AAdapter_Main::StaticClass());
+
+    ////Spawn the Gun Adapter
+    //APiezasAdapter* PiezasAdapter = GetWorld()->SpawnActor<APiezasAdapter>(APiezasAdapter::StaticClass());
+    ////Spawn the Shooter and set the Gun Adapter
+    //Shooter = GetWorld()->SpawnActor<AShooterBloques>(AShooterBloques::StaticClass());
+    //Shooter->DefinirMovimientoSling(PiezasAdapter);
+    ////Shoot
+    //Shooter->Sling();
+
+    //Shooter->Cambiar();
+
+
+
+
+    //Patron Strategy
+    //GetWorld()->SpawnActor<AStrategy_Main>(AStrategy_Main::StaticClass());
+
+    APiezasStrategy* PiezasStrategy = GetWorld()->SpawnActor<APiezasStrategy>(APiezasStrategy::StaticClass());
+    AEstrategiaFuerte* EstrategiaFuerte = GetWorld() -> SpawnActor<AEstrategiaFuerte>(AEstrategiaFuerte::StaticClass());
+    AEstrategiaRapida* EstrategiaRapida = GetWorld()->SpawnActor<AEstrategiaRapida>(AEstrategiaRapida::StaticClass());
+
+
+    PiezasStrategy->AlterarManiobras(EstrategiaRapida);
+    PiezasStrategy->Comprometer();
+
+    PiezasStrategy->AlterarManiobras(EstrategiaFuerte);
+    PiezasStrategy->Comprometer();
+
 
 }
 

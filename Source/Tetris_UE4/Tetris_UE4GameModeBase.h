@@ -46,4 +46,10 @@ class TETRIS_UE4_API ATetris_UE4GameModeBase : public AGameModeBase
 		class ICuboDecorator* CuboDecorator;
 
 
+
+		UPROPERTY()
+			class AShooterBloques* Shooter;
+
+
+
 };
