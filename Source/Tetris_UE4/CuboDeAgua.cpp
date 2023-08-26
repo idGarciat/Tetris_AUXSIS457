@@ -9,6 +9,11 @@ void ACuboDeAgua::CambioMaterial()
 	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Se cambio el material a uno de agua")));
 }
 
+
+
+//aslkdjalksdjaiosdu
+
+
 int ACuboDeAgua::Contador()
 {
 	//Devuelve el contador + 45
@@ -24,6 +29,6 @@ void ACuboDeAgua::Desaparecer()
 void ACuboDeAgua::CambioLocalizacion()
 {
 	Super::CambioLocalizacion();
-	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Se cambiÛ la localizacion del cubo (Cubo de agua)")));
+	GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Se cambi√≥ la localizacion del cubo (Cubo de agua)")));
 }
 
